@@ -3,7 +3,11 @@ import ProjectCard from '../components/ProjectCard';
 import './HomePage.css';
 
 function HomePage() {
-  const { projects } = useProjects();
+  const { projects, isLoading, error } = useProjects();
+
+  if (isLoading) return <h1>Loading...</h1>;
+
+  if (error) return <h1>{error.message}</h1>;
 
   return (
     <div>
